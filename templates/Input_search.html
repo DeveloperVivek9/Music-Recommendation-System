@@ -1,0 +1,117 @@
+<html>
+    <!--//
+<head>
+<style>
+body {
+  background: url("../static/music_wallpaper2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: normal;
+}
+</style>
+</head>
+-->
+<!--//  
+<head>
+<style>
+.myDiv {
+  border: 2px outset cyan;
+  margin:50px;
+  background-color: white;
+  text-align: center;
+  opacity:0.1
+}
+</style>
+</head>
+
+<div class="myDiv">
+<body text="black">
+	<center>
+        <h1><u>Search for recommendations</u></h1>
+	</center>
+    </body>
+</div>
+-->    
+<!-- width - width of search box 
+padding - inside the search box, how far from the border, the input must start
+margin - search box location from neighbours-->
+<head>
+<style>
+body {
+  background-color:black;
+  font-family: 'Courier New', monospace;
+  color:white;
+}
+p {
+  font-size: 22px;
+}
+ul {
+list-style: none; /* Remove default bullets */
+}
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: red; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+    }
+ul li{
+ font-size:25px;
+ color:white;
+}
+input[type=text] {
+      width: 50%;
+      padding: 10px 20px;
+      margin: 25px 0; 
+      box-sizing: border-box;
+      border: 5px solid turquoise;
+      border-radius: 25px;
+      background-color: black;
+      color: white;
+}
+input[type=text]:focus {
+  border: 5px solid yellow;
+}
+input[type=submit] {
+      width: 20%;
+      padding: 10px 20px;
+      margin: 2px 0; 
+      box-sizing: border-box;
+      border: 5px solid turquoise;
+      border-radius: 25px;
+      background-color: black;
+      color: white;}
+</style>
+</head>
+<body>
+    <center>
+        <h1><u>Search for recommendations</u></h1><br><br>
+    </center>
+    <h1><u>How are recommendations compiled?</u></h1>
+<ul>
+<li>We classify songs by the genre then using distance measures of features, produce recommendations. The features can be chosen by the user here. Recommendations are more of a similarity measure rather than a mixed bag of songs.</li><br>
+<li>We have a local database of audio features that we use to calculate distances. Distance measures like Euclidean, cosine and correlation is accounted for computation</li>
+</ul>
+<br>
+<h2>Enter the artist and song title below : </h2>
+        <form action = "/search-recommendation" method = "post" enctype="multipart/form-data">  
+            <center>
+            <input name="artist" type="text" placeholder="Enter artist" autocomplete="on"/>
+            <input name="title" type="text" placeholder="Enter title" autocomplete="on"/><br>
+            </center>
+            <h2>What type of recommendations are you looking for?</h2>
+            <center>
+            <p>Similar Valence<input type="checkbox" name="Features" value="Valence" checked> </p>
+            <p>Similar Tempo<input type="checkbox" name="Features" value="Tempo" checked> </p>
+            <p>Similar Instrumentalness<input type="checkbox" name="Features" value="Instrumentalness"> </p>
+            <p>Similar Energy<input type="checkbox" name="Features" value="Energy"> </p>
+            <p>Similar Liveness<input type="checkbox" name="Features" value="Liveness"> </p>
+            <p>Similar Acousticness<input type="checkbox" name="Features" value="Acousticness"> </p>
+            <p>Similar Danceability<input type="checkbox" name="Features" value="Danceability" </p>
+            <p>Similar Speechiness<input type="checkbox" name="Features" value="Speechiness"> </p>
+            </center>
+            <input type = "submit" value="Get Recommendations">  
+        </form> 
+</body>
+</html>

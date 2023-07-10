@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<style>
+body{
+    background-color:white;
+    font-family: 'Courier New', monospace;
+    color:black;}
+    
+div.Home
+    {
+    text-align: right;
+    }   
+div.Home a:link 
+    {
+    font-size: 150%;
+    color: yellow;
+    }
+div.Home a:visited 
+    {
+    color: yellow;}
+div.Home a:hover 
+    {
+    color: lime;
+    text-decoration: underline;
+    }
+div.Home a:active 
+    {
+    color: turquoise;
+    text-decoration: underline;
+    }
+
+div.recommendation{
+    background-color:white;
+    font-family: monospace;
+    color:white;}
+div.transbox 
+    {
+    margin: 0px;
+    background-color: black;
+    border: 1px solid white;
+    opacity: 0.5;
+    }
+div.transbox p
+    {
+    margin: 1%;
+    font-weight: bold;
+    opacity:1;
+    }  
+div.transbox a:link 
+    {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: none;
+    font-size:150%;
+    }
+div.transbox a:visited 
+    {
+    color: green;
+    }
+div.transbox a:hover 
+    {
+    color: red;
+    text-decoration: underline;
+    }
+div.transbox a:active 
+    {
+    color: yellow;
+    text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+    <div class="Home">
+    <a href="{{ url_for('search_upload') }}">Home</a>
+    </div>
+    <center>
+        <h1><u>Audio Analysis</u></h1>
+        <h3>Probability vs Genre Graph</h3>
+    </center>
+    <p>We detected that the {{filename}} is of <u>{{genre}}</u> genre.</p>
+    <p>In the plot below, you can see the presence of other genres if any.</p>
+    <p>The barplot below showcases probability for 10 classes.</p>
+
+    <div id='chart' class='chart' style="height:50%; width:100%;"></div>
+
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script type='text/javascript'>
+        var graphs = {{graphJSON | safe}};
+        var layout = {
+            plot_bgcolor:"black",
+            paper_bgcolor:"#FFF3"
+        }
+        Plotly.plot('chart',graphs,layout);
+    </script>
+    <h2>We recommend these songs : </h2>
+<div class="recommendation">
+    {% for song in recommendations %}
+    <div class="background">
+        <div class="transbox">
+            <p><a href="{{ song['Spotify_URI'] }}">{{ song['Artists'] }} - {{ song['Title'] }}</a></p>
+             <audio controls loop>
+                  <source src="{{ song['Preview_URL'] }}" type="audio/mpeg">
+                </audio>
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+    </div>
+</body>
+</html>

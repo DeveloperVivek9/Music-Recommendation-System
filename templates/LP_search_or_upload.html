@@ -1,0 +1,75 @@
+<html>
+<head>
+<style>
+body {
+  background-color:black;
+  font-family: 'Courier New', monospace;
+  color:white;
+}
+p {
+  font-size: 22px;
+}
+ul {
+list-style: none; /* Remove default bullets */
+}
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: red; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+    }
+ul li{
+ font-size:25px;
+ color:white;
+}
+    
+a.choice:link {
+  color: lime;
+    }
+a.choice:visited {
+  color: yellow;
+}
+a.choice:hover {
+  color: green;
+  text-decoration: underline;
+}
+a.choice:active {
+  color: green;
+  text-decoration: underline;
+}
+    
+</style>
+</head>
+<body>
+    <center>
+        <h1><u>Music Genre Recognition and Recommendation System</u></h1>
+        <br>
+    </center>
+    
+    <h1><u>Functions</u></h1>
+    <br>
+    <ul>
+    <li>Upload audio file to recognize genre then get recommendations</li>
+    <br>
+    <li>Search for a song to get recommendations</li>
+    <br>
+    </ul>
+    
+    <h1><u>Methodology</u></h1>
+    <br>
+    <ul>
+    <li>Classification of genre using deep learning architectures</li>
+    <br>
+    <li>Music Recognition using Shazam API</li>
+    <br>
+    <li>Recommendations done using Spotify API.</li>
+    <br>
+    </ul>
+    <center>
+    <h2> <a class="choice" href="{{ url_for('search') }}">Search</a></h2>
+    <h2> <a class="choice" href="{{ url_for('upload') }}">Upload</a></h2>
+    </center>
+</body>
+</html>
