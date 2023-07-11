@@ -1,11 +1,25 @@
 <html>
-<body text="white">
+<head>
+<style>
+body {
+  background-color:black;
+  font-family: 'Courier New', monospace;
+  color:white;
+}
+a{
+    color:white;
+    }
+</style>
+</head>
+<body>
+    <br>
+    <br>
     <center>
         <h1>Classification couldn't be done</h1>
     </center>
     <p>Are you sure you have uploaded the correct file? We couldn't extract features from {{ filename }}</p>
     <p>Sorry from our end.</p>
     <br>
-    <a href="http://127.0.0.1:5000/"><u>Try Again?</u></a>
+    <a href="{{ url_for('upload') }}"><u>Try Again with another file?</u></a>
 </body>
 </html>
